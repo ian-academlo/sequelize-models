@@ -1,14 +1,16 @@
 const express = require("express");
 const initModels = require("./models/initModels");
-// importamos la instancia db de database.js
 const db = require("./utils/database");
-// importo las rutas del usuario
 const userRoutes = require("./Routes/users.routes");
+const morgan = require("morgan");
+const handleError = require("./middlewares/error");
+
 require("dotenv").config();
 
 const app = express();
 
 app.use(express.json());
+app.use(morgan("dev"));
 
 const PORT = process.env.PORT || 8000; // undefined
 
@@ -22,10 +24,16 @@ db.sync({ force: false }) // devuelve una promesa
 
 initModels();
 
-app.get("/", (req, res) => {
-  res.status(200).json("Todo bien");
+app.get("/", (req, res, next) => {
+  res.status(200).json({ messge: "ok" });
+  next();
 });
 
 app.use("/api/v1", userRoutes);
 
+app.use(handleError);
+
 app.listen(PORT, () => console.log("Servidor corriendo en el puerto" + PORT));
+
+// si quieres crear un middleware que atienda a todas las rutas
+// debemos hacer un app.use al inicio
