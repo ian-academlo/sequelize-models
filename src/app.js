@@ -2,6 +2,7 @@ const express = require("express");
 const initModels = require("./models/initModels");
 const db = require("./utils/database");
 const userRoutes = require("./Routes/users.routes");
+const tasksRoutes = require("./Routes/tasks.routes");
 const morgan = require("morgan");
 const handleError = require("./middlewares/error");
 
@@ -30,6 +31,7 @@ app.get("/", (req, res, next) => {
 });
 
 app.use("/api/v1", userRoutes);
+app.use("/api/v1", tasksRoutes);
 
 app.use(handleError);
 
