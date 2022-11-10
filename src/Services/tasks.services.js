@@ -25,13 +25,6 @@ class TasksServices {
     }
   }
 
-  /* 
-  {
-    task: {idUser, title, description}, 
-    categories: [1, 4]
-  }
-*/
-
   static async create(task, categories) {
     try {
       const taskResult = await Tasks.create(task);
@@ -42,6 +35,20 @@ class TasksServices {
           await TaskCategories.create({ categoryId: category, taskId: id })
       );
       return taskResult;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async updateStatus(id) {
+    try {
+      const result = await Tasks.update(
+        { isComplete: true },
+        {
+          where: { id },
+        }
+      );
+      return result;
     } catch (error) {
       throw error;
     }

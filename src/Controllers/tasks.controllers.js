@@ -35,7 +35,22 @@ const createTask = async (req, res, next) => {
   }
 };
 
+const completeTask = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await TasksServices.updateStatus(id);
+    res.status(200).json({ message: "Tarea actualizada" });
+  } catch (error) {
+    next({
+      message: "No se ha podido actualizar la tarea",
+      status: 400,
+      error: error,
+    });
+  }
+};
+
 module.exports = {
   getTasksByUserId,
   createTask,
+  completeTask,
 };

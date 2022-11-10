@@ -2,6 +2,7 @@ const { Router } = require("express");
 const {
   getTasksByUserId,
   createTask,
+  completeTask,
 } = require("../Controllers/tasks.controllers");
 
 const router = Router();
@@ -13,6 +14,7 @@ router.get("/tasks/:userId", getTasksByUserId);
 router.post("/tasks", createTask);
 
 // actualizar tarea
+router.patch("/tasks/:id", completeTask);
 
 // eliminar tarea
 
