@@ -1,5 +1,8 @@
 const { Router } = require("express");
-const { getTasksByUserId } = require("../Controllers/tasks.controllers");
+const {
+  getTasksByUserId,
+  createTask,
+} = require("../Controllers/tasks.controllers");
 
 const router = Router();
 
@@ -7,9 +10,20 @@ const router = Router();
 router.get("/tasks/:userId", getTasksByUserId);
 
 // crear tarea --> una tarea esta asociada a un usuario --> ua tarea esta asociada --> categorias
+router.post("/tasks", createTask);
 
 // actualizar tarea
 
 // eliminar tarea
 
 module.exports = router;
+
+// crear una ruta para que un usuario pueda crear un tarea
+// idUser, categories, title, description,
+// body petición información para el POST
+/* 
+  {
+    task: {idUser, title, description}, 
+    categories: [1, 4]
+  }
+*/

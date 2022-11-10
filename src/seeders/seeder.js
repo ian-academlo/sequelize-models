@@ -39,14 +39,14 @@ const tasks = [
 ];
 
 const categories = [
-  { name: "personal" },
-  { name: "escuela" },
-  { name: "salud" },
-  { name: "trabajo" },
-  { name: "hogar" },
-  { name: "deporte" },
-  { name: "ocio" },
-  { name: "financiero" },
+  { name: "personal" }, // 1 . 1, 4, 5
+  { name: "escuela" }, // 2
+  { name: "salud" }, // 3
+  { name: "trabajo" }, // 4
+  { name: "hogar" }, // 5
+  { name: "deporte" }, // 6
+  { name: "ocio" }, // 7
+  { name: "financiero" }, // 8
 ];
 
 const tc = [
