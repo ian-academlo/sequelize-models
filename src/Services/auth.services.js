@@ -9,7 +9,7 @@ class AuthService {
       });
       if (result) {
         const isValid = bcrypt.compareSync(password, result.password);
-        return isValid;
+        return { isValid, result };
       }
       return false;
     } catch (error) {
