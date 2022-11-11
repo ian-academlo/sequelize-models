@@ -20,12 +20,13 @@ router.patch("/tasks/:id", completeTask);
 
 module.exports = router;
 
-// crear una ruta para que un usuario pueda crear un tarea
-// idUser, categories, title, description,
-// body petición información para el POST
-/* 
-  {
-    task: {idUser, title, description}, 
-    categories: [1, 4]
-  }
-*/
+// el uso de las contraseñas
+// un paso previo va a ser encriptar las contraseñas
+// para que ni nosotros ni el sistema tenga ese dato
+// bcrypt --> "lñdkfladsfj" -> 98475kjrbt23498ydhvc2348 // no hay manera de decodificarlo
+// // comparar una contraseña con la contraseña encriptada
+// que no se expone la contraseña en ni un momento
+
+// instalar bcrypr
+// vamos a beforeCreate --> Antes de que creemos al usuario vamos a encriptar la contraseña
+// y luego guardarla en la base de datos

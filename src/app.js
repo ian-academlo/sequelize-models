@@ -3,6 +3,7 @@ const initModels = require("./models/initModels");
 const db = require("./utils/database");
 const userRoutes = require("./Routes/users.routes");
 const tasksRoutes = require("./Routes/tasks.routes");
+const authRoutes = require("./Routes/auth.routes");
 const morgan = require("morgan");
 const handleError = require("./middlewares/error");
 
@@ -32,6 +33,7 @@ app.get("/", (req, res, next) => {
 
 app.use("/api/v1", userRoutes);
 app.use("/api/v1", tasksRoutes);
+app.use("/api/v1", authRoutes);
 
 app.use(handleError);
 
@@ -39,3 +41,6 @@ app.listen(PORT, () => console.log("Servidor corriendo en el puerto" + PORT));
 
 // si quieres crear un middleware que atienda a todas las rutas
 // debemos hacer un app.use al inicio
+
+// nuevo@gmail.com --> no me veré
+// nuevo1@gmail.com --> no me veré
