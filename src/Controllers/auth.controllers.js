@@ -26,3 +26,8 @@ const userLogin = async (req, res, next) => {
 module.exports = {
   userLogin,
 };
+
+// middleware de autenticación
+// tomar el token va a verificar que el usuario se quien quien dice ser
+// y si es... le responde con la infromación
+// si no es le devuelve un status 401 --> unauthorized

@@ -4,17 +4,18 @@ const {
   createTask,
   completeTask,
 } = require("../Controllers/tasks.controllers");
+const authVerification = require("../middlewares/auth.middleware");
 
 const router = Router();
 
 // obtener tareas por user id
-router.get("/tasks/:userId", getTasksByUserId);
+router.get("/tasks/:userId", authVerification, getTasksByUserId);
 
 // crear tarea --> una tarea esta asociada a un usuario --> ua tarea esta asociada --> categorias
-router.post("/tasks", createTask);
+router.post("/tasks", authVerification, createTask);
 
 // actualizar tarea
-router.patch("/tasks/:id", completeTask);
+router.patch("/tasks/:id", authVerification, completeTask);
 
 // eliminar tarea
 
